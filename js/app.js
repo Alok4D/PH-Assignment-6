@@ -1,44 +1,37 @@
-const letDiscuss = async () => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+const discussContainer = async () => {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
     const dataAll = data.posts;
     console.log(dataAll);
+    letDiscuss(dataAll);
     
-    letDiscussContainer(dataAll);
-
+    
+    // console.log(data.);
 }
-letDiscuss();
+    const letDiscuss = dataAll => {
+        // console.log(letDiscuss);
 
-    const letDiscussContainer = (dataAll) => {
+        const cardContainer = document.getElementById('discussContainer');
         
-        // 1. select id......
-        const phoneContainer = document.getElementById('discussContainer');
-        // clear all phone data
-        // phoneContainer.textContent = '';
-    
-    
-        dataAll.forEach(card => {
-        console.log(card);
-        // 2. Create a div
-        const phoneCard = document.createElement('div');
-        phoneCard.classList = 'mulish mt12 grid grid-cols-2  gap-96';
-        
-        // 3. set inner html
-        phoneCard.innerHTML = `
-        <div class="hero rounded-3xl w-[772px] gap-1 bg-[#F3F3F5] mt-10">
+        dataAll.forEach(data => {
+            console.log(data);
+        // 1 create a div
+        const humanCard = document.createElement('div');
+        humanCard.classList = `mulish mt-12 grid grid-cols-2  gap-96`;
+        humanCard.innerHTML = `
+        <div class="hero rounded-3xl w-[772px] gap-1 bg-[#F3F3F5]">
         <div class=" p-10">
           <figure class="absolute ">
             <div class="pl-14">
                 <div class="absolute w-[15px] rounded-2xl bg-red-600 h-[15px]"></div>
             </div>
-            <img src="">
-            <img scr="${card.image}" alt"" class=" bg-white rounded-2xl border-red-600 h-[72px] w-[72px]"/>
+            <img src="${data.image}" class=" bg-white rounded-2xl border-red-600 h-[72px] w-[72px] "/>
           </figure>
 
          <div class="pl-24">
             <div class="flex gap-5">
-                <div class="text-[14px] text-[#12132DCC]">#Music :  </div>
-                <div class="text-[14px] text-[#12132DCC]">Author : Awlad Hossain</div>
+                <div class="text-[14px] text-[#12132DCC]"># Music</div>
+                <div class="text-[14px] text-[#12132DCC]">Author : ${data.author.name} </div>
             </div>
             <h1 class="text-xl pt-3 text-[#12132D] font-bold">10 Kids Unaware of Their Halloween Costume</h1>
             <p class="py-6 text-[#12132D99] text-[16px]">It’s one thing to subject yourself to ha Halloween costume mishap because, <br> hey that’s your prerogative</p>
@@ -47,9 +40,9 @@ letDiscuss();
                 <div class="flex gap-6">
                     <div class="flex gap-2">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                                <path d="M9.33333 10.5H18.6667M9.33333 15.1666H16.3333M10.5 21H7C6.07174 21 5.1815 20.6312 4.52513 19.9748C3.86875 19.3185 3.5 18.4282 3.5 17.5V8.16663C3.5 7.23837 3.86875 6.34813 4.52513 5.69175C5.1815 5.03538 6.07174 4.66663 7 4.66663H21C21.9283 4.66663 22.8185 5.03538 23.4749 5.69175C24.1313 6.34813 24.5 7.23837 24.5 8.16663V17.5C24.5 18.4282 24.1313 19.3185 23.4749 19.9748C22.8185 20.6312 21.9283 21 21 21H17.5L14 24.5L10.5 21Z" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                           <path d="M9.33333 10.5H18.6667M9.33333 15.1666H16.3333M10.5 21H7C6.07174 21 5.1815 20.6312 4.52513 19.9748C3.86875 19.3185 3.5 18.4282 3.5 17.5V8.16663C3.5 7.23837 3.86875 6.34813 4.52513 5.69175C5.1815 5.03538 6.07174 4.66663 7 4.66663H21C21.9283 4.66663 22.8185 5.03538 23.4749 5.69175C24.1313 6.34813 24.5 7.23837 24.5 8.16663V17.5C24.5 18.4282 24.1313 19.3185 23.4749 19.9748C22.8185 20.6312 21.9283 21 21 21H17.5L14 24.5L10.5 21Z" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         </div>
                         <div class="font-bold text-[#12132D99]">560</div>
                     </div>
@@ -71,7 +64,7 @@ letDiscuss();
                         <div class="font-bold text-[#12132D99] text-[16px]">5 min</div>
                     </div>
                 </div>
-                <div class="text-[#10B981]">
+                <button class="text-[#10B981]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                         <g clip-path="url(#clip0_57_425)">
                           <path d="M13.9998 0C6.26805 0 9.15527e-05 6.26814 9.15527e-05 13.9999C9.15527e-05 21.7314 6.26805 28 13.9998 28C21.7315 28 27.9999 21.7314 27.9999 13.9999C27.9999 6.26814 21.7315 0 13.9998 0ZM14 4.91741L22.2847 10.0835H5.71542L14 4.91741ZM22.3879 18.333H22.3871C22.3871 19.1616 21.7155 19.8331 20.887 19.8331H7.1131C6.28447 19.8331 5.61303 19.1615 5.61303 18.333V10.4122C5.61303 10.3245 5.62199 10.2393 5.63655 10.1556L13.552 15.0914C13.5617 15.0975 13.5721 15.1016 13.5821 15.1072C13.5925 15.113 13.6032 15.1186 13.6138 15.1239C13.6697 15.1527 13.7273 15.176 13.7862 15.1912C13.7923 15.1929 13.7983 15.1936 13.8044 15.195C13.869 15.2102 13.9344 15.2197 13.9998 15.2197H14.0002C14.0007 15.2197 14.0012 15.2197 14.0012 15.2197C14.0665 15.2197 14.1319 15.2105 14.1965 15.195C14.2026 15.1935 14.2086 15.1929 14.2147 15.1912C14.2735 15.176 14.3309 15.1527 14.3871 15.1239C14.3977 15.1186 14.4084 15.113 14.4188 15.1072C14.4287 15.1016 14.4392 15.0975 14.4489 15.0914L22.3644 10.1556C22.3789 10.2393 22.3879 10.3244 22.3879 10.4122V18.333Z" fill="#10B981"/>
@@ -82,13 +75,57 @@ letDiscuss();
                           </clipPath>
                         </defs>
                       </svg>
-                </div>
+                </button>
             </div>
           </div>
         </div>
       </div>
+      <div class="border rounded-3xl bg-[#12132D0D]">
+        <div class="flex justify-between p-6">
+            <div class="mulish text-[#12132D] text-xl">Title</div>
+            <div class="inter text-[#12132D99] text-[16px]">Mark as read (<span>4</span>)</div>
+        </div>
+      </div>
         `;
-        // 4. append child
-        phoneContainer.appendChild(phoneCard);
-         });
+        // 
+        cardContainer.appendChild(humanCard);
+        });
     }
+discussContainer();
+
+console.log('text-xl pt-3 text-[#12132D] font-bold');
+
+// <<<<<<<<<<<<>>>>>>>>>>>>>
+
+// // ticket array
+// let ticketsArr = [];
+// const seats = document.querySelectorAll('.text-xl pt-3 text-[#12132D] font-bold');
+// const seatCount = document.querySelector('#font-bold text-[#12132D99]');
+// const leftSeats = document.querySelector('#left-seats');
+// const cuponButton = document.querySelector('#cupon-button');
+// const submitButt = document.querySelector('#submit-button');
+
+// // click color
+// function toogleCol (seat) {
+//   seat.classList.toggle('bg-[#F7F8F8]');
+//   seat.classList.toggle('text-[#03071280]');
+//   seat.classList.toggle('bg-[#1DD100]');
+//   seat.classList.toggle('text-white');
+// }
+// function prevD (e) {
+//   e.preventDefault();
+// }
+// function updateSeatTable () {
+//   const tBody = document.querySelector('tBody');
+//   tBody.innerHTML = '';
+//   ticketsArr.forEach(ticket => {
+//     tBody.innerHTML += `
+//     <tr>
+//       <th class="p-4 text-[#03071299] text-base font-normal">${ticket}</th>
+//       <th class="p-4 text-[#03071299] text-base font-normal">Economy</th>
+//       <th class="p-4 text-[#03071299] text-base font-normal">550</th>
+//     </tr>
+//     `
+//   });
+// }
+
