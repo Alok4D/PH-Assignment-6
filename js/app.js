@@ -1,25 +1,27 @@
-const discussPostContainer = async (searchText) => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
-    const data = await res.json();
-    const dataAll = data.posts;
-    console.log(dataAll);
-    letDiscuss(dataAll);
-    // console.log(data.);
-}
-    const letDiscuss = dataAll => {
-        // console.log(letDiscuss);
+const discussPostContainer = async (searchText, isLoading) => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`
+  );
+  const data = await res.json();
+  const dataAll = data.posts;
+  console.log(dataAll);
+  letDiscuss(dataAll, isLoading);
+  // console.log(data.);
+};
+const letDiscuss = (dataAll) => {
+  // console.log(letDiscuss);
 
-        const cardContainer = document.getElementById('discussContainer');
+  const cardContainer = document.getElementById("discussContainer");
 
-        // clear 
-        discussContainer.textContent = '';
-        
-        dataAll.forEach(data => {
-            console.log(data);
-        // 1 create a div
-        const humanCard = document.createElement('div');
-        humanCard.classList = `mulish mt-12 grid grid-cols-2  gap-96`;
-        humanCard.innerHTML = `
+  // clear
+  discussContainer.textContent = "";
+
+  dataAll.forEach((data) => {
+    console.log(data);
+    // 1 create a div
+    const humanCard = document.createElement("div");
+    humanCard.classList = `mulish mt-12 grid grid-cols-2  gap-96`;
+    humanCard.innerHTML = `
         <div class="hero rounded-3xl w-[772px] gap-1 bg-[#F3F3F5]">
         <div class="p-10">
           <figure class="absolute ">
@@ -84,31 +86,40 @@ const discussPostContainer = async (searchText) => {
       </div>
 
 
-      <div class="border rounded-3xl bg-[#12132D0D]">
-        <div class="flex justify-between p-6">
-            <div class="mulish text-[#12132D] text-xl">Title</div>
-            <div class="inter text-[#12132D99] text-[16px]">Mark as read (<span>4</span>)</div>
-        </div>
-      </div>
-
+      
 
         `;
-        
-        // 
-        cardContainer.appendChild(humanCard);
-        });
-    }
 
-    // handle search button
-    const handleSearch = () =>{
-      const searchField = document.getElementById('search-field');
-      const searchText = searchField.value;
-      console.log(searchText);
-      discussPostContainer(searchText);
+    //
+    cardContainer.appendChild(humanCard);
+  });
+  toggleLoadingSpinner(false);
+};
 
-      // console.log('handle search');
+// handle search button
+const handleSearch = () => {
+  toggleLoadingSpinner(true);
+  const searchField = document.getElementById("search-field");
+  const searchText = searchField.value;
+  console.log(searchText);
+  discussPostContainer(searchText);
+
+  // console.log('handle search');
+};
+
+
+// <<<<<<<<>>>>>>>>>
+const toggleLoadingSpinner = (isLoading) => {
+  const loadingSpinner = document.getElementById("loading-spinner");
+  loadingSpinner.classList.remove('hidden');
+
+
+  if (isLoading) {
+    loadingSpinner.classList.remove("hidden");
+  } else {
+    loadingSpinner.classList.add("hidden");
   }
 
+};
 
 // discussContainer();
-
