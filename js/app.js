@@ -4,8 +4,6 @@ const discussContainer = async () => {
     const dataAll = data.posts;
     console.log(dataAll);
     letDiscuss(dataAll);
-    
-    
     // console.log(data.);
 }
     const letDiscuss = dataAll => {
@@ -30,11 +28,11 @@ const discussContainer = async () => {
 
          <div class="pl-24">
             <div class="flex gap-5">
-                <div class="text-[14px] text-[#12132DCC]"># Music</div>
+                <div class="text-[14px] text-[#12132DCC]"> # ${data.category}</div>
                 <div class="text-[14px] text-[#12132DCC]">Author : ${data.author.name} </div>
             </div>
-            <h1 class="text-xl pt-3 text-[#12132D] font-bold">10 Kids Unaware of Their Halloween Costume</h1>
-            <p class="py-6 text-[#12132D99] text-[16px]">It’s one thing to subject yourself to ha Halloween costume mishap because, <br> hey that’s your prerogative</p>
+            <h1 class="text-xl pt-3 text-[#12132D] font-bold">${data.title}</h1>
+            <p class="py-6 text-[#12132D99] text-[16px]">${data.description}</p>
             <div class="border w-full border-dashed border-[#12132D40]"></div>
             <div class="flex justify-between pt-5">
                 <div class="flex gap-6">
@@ -44,7 +42,7 @@ const discussContainer = async () => {
                            <path d="M9.33333 10.5H18.6667M9.33333 15.1666H16.3333M10.5 21H7C6.07174 21 5.1815 20.6312 4.52513 19.9748C3.86875 19.3185 3.5 18.4282 3.5 17.5V8.16663C3.5 7.23837 3.86875 6.34813 4.52513 5.69175C5.1815 5.03538 6.07174 4.66663 7 4.66663H21C21.9283 4.66663 22.8185 5.03538 23.4749 5.69175C24.1313 6.34813 24.5 7.23837 24.5 8.16663V17.5C24.5 18.4282 24.1313 19.3185 23.4749 19.9748C22.8185 20.6312 21.9283 21 21 21H17.5L14 24.5L10.5 21Z" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         </div>
-                        <div class="font-bold text-[#12132D99]">560</div>
+                        <div class="font-bold text-[#12132D99]">${data.comment_count}</div>
                     </div>
                     <div class="flex gap-2">
                         <div class="text-[#12132D99]">
@@ -53,15 +51,16 @@ const discussContainer = async () => {
                                 <path d="M24.5 14C21.7 18.6667 18.2 21 14 21C9.8 21 6.3 18.6667 3.5 14C6.3 9.33333 9.8 7 14 7C18.2 7 21.7 9.33333 24.5 14Z" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <div class="font-bold text-[#12132D99]">1,568</div>
-                    </div>
+                        <div class="font-bold text-[#12132D99]">${data.view_count}
+                        </div>
+                        </div>
                     <div class="flex gap-2">
                         <div class="text-[#12132D99]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                                 <path d="M9.91667 14H14V8.16667M3.5 14C3.5 15.3789 3.77159 16.7443 4.29926 18.0182C4.82694 19.2921 5.60036 20.4496 6.57538 21.4246C7.55039 22.3996 8.70791 23.1731 9.98182 23.7007C11.2557 24.2284 12.6211 24.5 14 24.5C15.3789 24.5 16.7443 24.2284 18.0182 23.7007C19.2921 23.1731 20.4496 22.3996 21.4246 21.4246C22.3996 20.4496 23.1731 19.2921 23.7007 18.0182C24.2284 16.7443 24.5 15.3789 24.5 14C24.5 12.6211 24.2284 11.2557 23.7007 9.98182C23.1731 8.70791 22.3996 7.55039 21.4246 6.57538C20.4496 5.60036 19.2921 4.82694 18.0182 4.29927C16.7443 3.77159 15.3789 3.5 14 3.5C12.6211 3.5 11.2557 3.77159 9.98182 4.29927C8.70791 4.82694 7.55039 5.60036 6.57538 6.57538C5.60036 7.55039 4.82694 8.70791 4.29926 9.98182C3.77159 11.2557 3.5 12.6211 3.5 14Z" stroke="#12132D" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>
                         </div>
-                        <div class="font-bold text-[#12132D99] text-[16px]">5 min</div>
+                        <div class="font-bold text-[#12132D99] text-[16px]">${data.posted_time} min</div>
                     </div>
                 </div>
                 <button class="text-[#10B981]">
@@ -80,13 +79,18 @@ const discussContainer = async () => {
           </div>
         </div>
       </div>
+
+
       <div class="border rounded-3xl bg-[#12132D0D]">
         <div class="flex justify-between p-6">
             <div class="mulish text-[#12132D] text-xl">Title</div>
             <div class="inter text-[#12132D99] text-[16px]">Mark as read (<span>4</span>)</div>
         </div>
       </div>
+
+
         `;
+        
         // 
         cardContainer.appendChild(humanCard);
         });
