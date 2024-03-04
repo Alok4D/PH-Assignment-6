@@ -93,39 +93,3 @@ const discussContainer = async () => {
     }
 discussContainer();
 
-console.log('text-xl pt-3 text-[#12132D] font-bold');
-
-// <<<<<<<<<<<<>>>>>>>>>>>>>
-
-// // ticket array
-// let ticketsArr = [];
-// const seats = document.querySelectorAll('.text-xl pt-3 text-[#12132D] font-bold');
-// const seatCount = document.querySelector('#font-bold text-[#12132D99]');
-// const leftSeats = document.querySelector('#left-seats');
-// const cuponButton = document.querySelector('#cupon-button');
-// const submitButt = document.querySelector('#submit-button');
-
-// // click color
-// function toogleCol (seat) {
-//   seat.classList.toggle('bg-[#F7F8F8]');
-//   seat.classList.toggle('text-[#03071280]');
-//   seat.classList.toggle('bg-[#1DD100]');
-//   seat.classList.toggle('text-white');
-// }
-// function prevD (e) {
-//   e.preventDefault();
-// }
-// function updateSeatTable () {
-//   const tBody = document.querySelector('tBody');
-//   tBody.innerHTML = '';
-//   ticketsArr.forEach(ticket => {
-//     tBody.innerHTML += `
-//     <tr>
-//       <th class="p-4 text-[#03071299] text-base font-normal">${ticket}</th>
-//       <th class="p-4 text-[#03071299] text-base font-normal">Economy</th>
-//       <th class="p-4 text-[#03071299] text-base font-normal">550</th>
-//     </tr>
-//     `
-//   });
-// }
-
