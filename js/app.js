@@ -1,5 +1,5 @@
-const discussContainer = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+const discussContainer = async (searchText) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts${searchText}`);
     const data = await res.json();
     const dataAll = data.posts;
     console.log(dataAll);
@@ -95,5 +95,17 @@ const discussContainer = async () => {
         cardContainer.appendChild(humanCard);
         });
     }
-discussContainer();
+
+    // handle search button
+    const handleSearch = () =>{
+      const searchField = document.getElementById('search-field');
+      const searchText = searchField.value;
+      console.log(searchText);
+      discussContainer(searchText);
+      
+      // console.log('handle search');
+  }
+
+
+// discussContainer();
 
