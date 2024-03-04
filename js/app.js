@@ -1,5 +1,5 @@
-const discussContainer = async (searchText) => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts${searchText}`);
+const discussPostContainer = async (searchText) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
     const data = await res.json();
     const dataAll = data.posts;
     console.log(dataAll);
@@ -10,6 +10,9 @@ const discussContainer = async (searchText) => {
         // console.log(letDiscuss);
 
         const cardContainer = document.getElementById('discussContainer');
+
+        // clear 
+        discussContainer.textContent = '';
         
         dataAll.forEach(data => {
             console.log(data);
@@ -18,7 +21,7 @@ const discussContainer = async (searchText) => {
         humanCard.classList = `mulish mt-12 grid grid-cols-2  gap-96`;
         humanCard.innerHTML = `
         <div class="hero rounded-3xl w-[772px] gap-1 bg-[#F3F3F5]">
-        <div class=" p-10">
+        <div class="p-10">
           <figure class="absolute ">
             <div class="pl-14">
                 <div class="absolute w-[15px] rounded-2xl bg-red-600 h-[15px]"></div>
@@ -101,8 +104,8 @@ const discussContainer = async (searchText) => {
       const searchField = document.getElementById('search-field');
       const searchText = searchField.value;
       console.log(searchText);
-      discussContainer(searchText);
-      
+      discussPostContainer(searchText);
+
       // console.log('handle search');
   }
 

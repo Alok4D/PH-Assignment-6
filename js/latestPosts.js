@@ -35,7 +35,7 @@ const latestContainer = async() =>{
       `;
       latestCard.appendChild(div3)
     })
-  }
+  } 
   latestContainer()
 
   
